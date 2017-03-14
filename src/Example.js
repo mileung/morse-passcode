@@ -13,16 +13,16 @@ const Login = ({ navigator }) => {
   return (
     <Doorman
       style={styles.container}
-      onPress={(x, y) => console.log(x, y)}
-      onRelease={(x, y) => console.log(x, y)}
-      passcode={[[0, 100], [300, 800], [1000, 1500]]}
+      onPress={(x, y) => console.log()}
+      onRelease={(x, y) => console.log()}
+      passcode={[[0,109],[355,456],[525,591],[636,716],[985,1076],[1772,1897],[2201,2280]]}
       leeway={500}
       scaleInput={true}
       onFail={input => {
-        console.log('INPUT', input) ;
+        console.log('Failed', JSON.stringify(input)) ;
       }}
       onSuccess={input => {
-        console.log('INPUT', input);
+        console.log('Success', JSON.stringify(input));
         navigator.push({ title: 'LoggedIn' });
       }}
       >
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
   }
 });
