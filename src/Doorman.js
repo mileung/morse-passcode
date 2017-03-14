@@ -27,19 +27,34 @@ export default class Doorman extends React.Component {
     onSuccess: () => {}
   }
 
-  componentWillMount() {
-    console.log('React.PropTypes', typeof React.PropTypes.number)
-    this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onMoveShouldSetPanResponder: (evt, gestureState) => true,
-      onPanResponderGrant: (evt, { x0, y0 }) => {
-        this.props.onPress(x0, y0);
-      },
-      onPanResponderRelease: (evt, { x0, y0, dx, dy}) => {
-        this.props.onRelease(x0 + dx, y0 + dy);
+  input = []
+
+  currentEvent = []
+
+  firstEventTime = null
+
+  lastEventTime = null
+
+  _panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onMoveShouldSetPanResponder: () => true,
+    onPanResponderGrant: (evt, { x0, y0 }) => {
+      let now = Date.now();
+      this.props.onPress(x0, y0);
+      if (!this.firstEventTime) {
+        this.firstEventTime = now
       }
-    });
-  }
+      this.currentEvent.push(now - this.firstEventTime);
+    },
+    onPanResponderRelease: (evt, { x0, y0, dx, dy}) => {
+      let now = Date.now();
+      this.props.onRelease(x0 + dx, y0 + dy);
+      this.currentEvent.push(now - this.firstEventTime);
+      this.input.push(this.currentEvent);
+      this.currentEvent = [];
+      console.log('THIS.INPUT', this.input)
+    }
+  });
 
   render() {
     return (
