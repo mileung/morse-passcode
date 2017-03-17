@@ -12,17 +12,20 @@ export default class Circle extends React.Component {
     x: React.PropTypes.number,
     y: React.PropTypes.number,
     zIndex: React.PropTypes.number,
-    onInvisible: React.PropTypes.func
+    rippleDuration: React.PropTypes.number,
+    fadeOutDuration: React.PropTypes.number,
+    color:React.PropTypes.string
   }
 
   static defaultProps = {
-    toSize: 1500,
+    toSize: 0,
     color: '#ccc',
     initialOpacity: 0.5,
     x: 0,
     y: 0,
     zIndex: null,
-    onInvisible: () => {}
+    rippleDuration: 500,
+    fadeOutDuration: 200,
   }
 
   componentWillMount() {
@@ -51,7 +54,7 @@ export default class Circle extends React.Component {
             width: this.size,
             borderRadius: this.size,
             opacity: this.opacity,
-            backgroundColor: color,
+            backgroundColor: color
           }}
         />
       </View>
@@ -59,22 +62,18 @@ export default class Circle extends React.Component {
   }
 
   componentDidMount() {
-    let { duration, toSize } = this.props;
+    let { rippleDuration, toSize } = this.props;
     Animated.timing(this.size, {
-      // duration,
+      duration: rippleDuration,
       toValue: toSize
     }).start();
   }
 
   fadeOut = () => {
-    console.log('fadeOut')
-    let { duration, onInvisible } = this.props;
+    let { fadeOutDuration } = this.props;
     Animated.timing(this.opacity, {
-      // duration,
+      duration: fadeOutDuration,
       toValue: 0
-    }).start(() => {
-      onInvisible();
-      console.log('onInvisible')
-    });
+    }).start();
   }
 }

@@ -13,8 +13,8 @@ const Login = ({ navigator }) => {
   return (
     <Doorman
       style={styles.container}
-      onPress={(x, y) => console.log()}
-      onRelease={(x, y) => console.log()}
+      onPress={(x, y) => {}}
+      onRelease={(x, y) => {}}
       passcode={[[0,109],[355,456],[525,591],[636,716],[985,1076],[1772,1897],[2201,2280]]}
       leeway={500}
       scaleInput={true}
@@ -22,9 +22,12 @@ const Login = ({ navigator }) => {
         // console.log('Failed', JSON.stringify(input)) ;
       }}
       onSuccess={input => {
-        // console.log('Success', JSON.stringify(input));
+        console.log('Success', JSON.stringify(input));
         navigator.push({ title: 'LoggedIn' });
       }}
+      rippleDuration={5000}
+      fadeOutDuration={5000}
+      rippleColor="#3399ff"
       >
       <Text>What's the passcode?</Text>
     </Doorman>
@@ -34,7 +37,7 @@ const Login = ({ navigator }) => {
 const LoggedIn = () => {
   return (
     <View style={styles.container}>
-      <Text>We've been waiting for you</Text>
+      <Text>We've been expecting you</Text>
     </View>
   );
 };
@@ -46,7 +49,6 @@ const ROUTES = {
 
 export default class Example extends React.Component {
   render() {
-    console.log('Doorman proptypes', Doorman.propTypes)
     return (
       <Navigator
         initialRoute={{ title: 'Login' }}
