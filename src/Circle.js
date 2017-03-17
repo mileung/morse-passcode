@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Animated,
-  View
+  View,
+  Easing
 } from 'react-native';
 
 export default class Circle extends React.Component {
@@ -65,7 +66,8 @@ export default class Circle extends React.Component {
     let { rippleDuration, toSize } = this.props;
     Animated.timing(this.size, {
       duration: rippleDuration,
-      toValue: toSize
+      toValue: toSize,
+      easing: Easing.out(Easing.cubic)
     }).start();
   }
 
