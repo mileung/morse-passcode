@@ -13,7 +13,7 @@ const Login = ({ navigator }) => {
   return (
     <Doorman
       style={styles.container}
-      onPress={(x, y) => console.log()}
+      onPress={(x, y) => console.log(x, y)}
       onRelease={(x, y) => console.log()}
       passcode={[[0,109],[355,456],[525,591],[636,716],[985,1076],[1772,1897],[2201,2280]]}
       leeway={500}

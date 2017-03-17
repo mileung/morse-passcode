@@ -5,6 +5,8 @@ import {
   PanResponder
 } from 'react-native';
 
+import Circle from './Circle';
+
 export default class Doorman extends React.Component {
   static propTypes = {
     ...View.propTypes,
@@ -13,7 +15,8 @@ export default class Doorman extends React.Component {
     passcode: React.PropTypes.arrayOf(React.PropTypes.array),
     leeway: React.PropTypes.number,
     onFail: React.PropTypes.func,
-    onSuccess: React.PropTypes.func
+    onSuccess: React.PropTypes.func,
+    ripple: React.PropTypes.bool
   }
 
   static defaultProps = {
@@ -22,7 +25,12 @@ export default class Doorman extends React.Component {
     passcode: [[]],
     leeway: 500,
     onFail: () => {},
-    onSuccess: () => {}
+    onSuccess: () => {},
+    ripple: true
+  }
+
+  state = {
+    circles: []
   }
 
   componentWillMount() {
@@ -36,12 +44,16 @@ export default class Doorman extends React.Component {
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: (evt, { x0, y0 }) => {
+        let { onPress, ripple } = this.props;
         let now = Date.now();
-        this.props.onPress(x0, y0);
-        console.log('firstEventTime', this.firstEventTime)
+        onPress(x0, y0);
 
         if (!this.firstEventTime) {
           this.firstEventTime = now
+        }
+
+        if (ripple) {
+          this.createCircle(x0, y0);
         }
 
         this.currentEvent.push(now - this.firstEventTime);
@@ -64,9 +76,23 @@ export default class Doorman extends React.Component {
         {...this.props}
         {...this._panResponder.panHandlers}
         >
-
+        {this.props.children}
+        {this.state.circles}
       </View>
     );
+  }
+
+  createCircle = (x, y) => {
+    let circles = this.state.circles;
+    circles.push(
+      <Circle
+        key={this.state.circles.length}
+        x={x}
+        y={y}
+      />
+    );
+
+    this.setState({ circles });
   }
 
   checkInput = () => {
