@@ -26,7 +26,7 @@ export default class Circle extends React.Component {
   }
 
   componentWillMount() {
-    this.size = new Animated.Value(0)
+    this.size = new Animated.Value(0);
     this.opacity = new Animated.Value(this.props.initialOpacity);
   }
 
@@ -66,11 +66,15 @@ export default class Circle extends React.Component {
     }).start();
   }
 
-  fadeOut() {
-    let { duration, toSize } = this.props;
+  fadeOut = () => {
+    console.log('fadeOut')
+    let { duration, onInvisible } = this.props;
     Animated.timing(this.opacity, {
       // duration,
       toValue: 0
-    }).start(this.props.onInvisible);
+    }).start(() => {
+      onInvisible();
+      console.log('onInvisible')
+    });
   }
 }

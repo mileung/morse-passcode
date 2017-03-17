@@ -66,32 +66,43 @@ export default class Doorman extends React.Component {
         this.input.push(this.currentEvent);
         this.currentEvent = [];
         this.endTimer = setTimeout(this.checkInput, this.endDelay);
+        this.refs[this.state.circles.length - 1].fadeOut()
       }
     });
   }
 
   render() {
+    // console.log('circles', this.state.circles)
     return (
       <View
         {...this.props}
         {...this._panResponder.panHandlers}
         >
         {this.props.children}
-        {this.state.circles}
+        {this.state.circles.map(({ x, y }, i) => {
+          return (
+            <Circle
+              key={i}
+              ref={`${i}`}
+              x={x}
+              y={y}
+              onInvisible={this.removeFirstCircle}
+            />
+          );
+        })}
       </View>
     );
   }
 
   createCircle = (x, y) => {
     let circles = this.state.circles;
-    circles.push(
-      <Circle
-        key={this.state.circles.length}
-        x={x}
-        y={y}
-      />
-    );
+    circles.push({ x, y });
+    this.setState({ circles });
+  }
 
+  removeFirstCircle = () => {
+    let circles = this.state.circles;
+    circles.shift();
     this.setState({ circles });
   }
 
