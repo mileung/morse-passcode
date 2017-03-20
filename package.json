@@ -1,7 +1,7 @@
 {
-  "name": "MorsePasscode",
+  "name": "morse-passcode",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
@@ -18,5 +18,26 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "A React Native component that implements security with morse code",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiLeung/morse-passcode.git"
+  },
+  "keywords": [
+    "morse",
+    "code",
+    "passcode",
+    "react",
+    "native",
+    "security",
+    "doorman"
+  ],
+  "author": "Michael Leung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiLeung/morse-passcode/issues"
+  },
+  "homepage": "https://github.com/MiLeung/morse-passcode#readme"
 }
