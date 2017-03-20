@@ -2,15 +2,15 @@
 
 A React Native component that implements security with morse code
 
-## Installation
+## Install
 
 `npm install --save morse-passcode`
 
-## Importation
+## Import
 
 `import Doorman from 'morse-passcode';`
 
-## Usagation
+## Usage
 
 ```javascript
 render() {
@@ -36,7 +36,7 @@ render() {
 }
 ```
 
-## Exampleation [code](https://github.com/MiLeung/morse-passcode/blob/master/src/Example.js)
+## Example [code](https://github.com/MiLeung/morse-passcode/blob/master/src/Example.js)
 #### SOS
 
 ![](https://media.giphy.com/media/xUPGcxH92M295TrZMQ/giphy.gif)
