@@ -36,6 +36,22 @@ render() {
 }
 ```
 
+## props
+
+| property        | type     | default   |
+|-----------------|----------|-----------|
+| onPress         | string   | 'numeric' |
+| onRelease       | boolean  | true      |
+| passcode        | function | () => {}  |
+| leeway          | number   | 500       |
+| onFail          | function | () => {}  |
+| onSuccess       | function | () => {}  |
+| ripple          | boolean  | true      |
+| rippleDuration  | number   | 500       |
+| fadeOutDuration | number   | 200       |
+| rippleColor     | string   | '#ccc'    |
+| initialOpacity  | number   | 0.5       |
+
 ## Exmapleation
 
 ### SOS
