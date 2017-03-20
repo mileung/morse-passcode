@@ -4,11 +4,11 @@ A React Native component that implements security with morse code
 
 ## Installation
 
-npm install --save morse-passcode
+`npm install --save morse-passcode`
 
 ## Importation
 
-import Doorman from 'morse-passcode';
+`import Doorman from 'morse-passcode';`
 
 ## Usagation
 
