@@ -36,7 +36,7 @@ render() {
 }
 ```
 
-## Example [code](https://github.com/MiLeung/morse-passcode/blob/master/src/Example.js)
+## Exampleation [code](https://github.com/MiLeung/morse-passcode/blob/master/src/Example.js)
 #### SOS
 
 ![](https://media.giphy.com/media/xUPGcxH92M295TrZMQ/giphy.gif)
