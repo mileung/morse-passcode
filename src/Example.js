@@ -1,7 +1,7 @@
 
 import React from 'react';
+import { Navigator } from 'react-native-deprecated-custom-components';
 import {
-  Navigator,
   View,
   Text,
   StyleSheet,
@@ -38,7 +38,6 @@ class Login extends React.Component {
         >
         <StatusBar barStyle="light-content" />
         <Text style={styles.message}>{this.state.text}</Text>
-        {/* asdhuasd */}
       </Doorman>
     );
   }

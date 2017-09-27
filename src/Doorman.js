@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   PanResponder
@@ -10,17 +11,17 @@ import Circle from './Circle';
 export default class Doorman extends React.Component {
   static propTypes = {
     ...View.propTypes,
-    onPress: React.PropTypes.func,
-    onRelease: React.PropTypes.func,
-    passcode: React.PropTypes.arrayOf(React.PropTypes.array),
-    leeway: React.PropTypes.number,
-    onFail: React.PropTypes.func,
-    onSuccess: React.PropTypes.func,
-    ripple: React.PropTypes.bool,
-    rippleDuration: React.PropTypes.number,
-    fadeOutDuration: React.PropTypes.number,
-    rippleColor:React.PropTypes.string,
-    initialOpacity: React.PropTypes.number
+    onPress: PropTypes.func,
+    onRelease: PropTypes.func,
+    passcode: PropTypes.arrayOf(PropTypes.array),
+    leeway: PropTypes.number,
+    onFail: PropTypes.func,
+    onSuccess: PropTypes.func,
+    ripple: PropTypes.bool,
+    rippleDuration: PropTypes.number,
+    fadeOutDuration: PropTypes.number,
+    rippleColor: PropTypes.string,
+    initialOpacity: PropTypes.number
   }
 
   static defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Animated,
   View,
@@ -7,15 +8,15 @@ import {
 
 export default class Circle extends React.Component {
   static propTypes = {
-    toSize: React.PropTypes.number, // preferable the size of the Doorman View
-    color: React.PropTypes.string,
-    initialOpacity: React.PropTypes.number,
-    x: React.PropTypes.number,
-    y: React.PropTypes.number,
-    zIndex: React.PropTypes.number,
-    rippleDuration: React.PropTypes.number,
-    fadeOutDuration: React.PropTypes.number,
-    color:React.PropTypes.string
+    toSize: PropTypes.number, // preferable the size of the Doorman View
+    color: PropTypes.string,
+    initialOpacity: PropTypes.number,
+    x: PropTypes.number,
+    y: PropTypes.number,
+    zIndex: PropTypes.number,
+    rippleDuration: PropTypes.number,
+    fadeOutDuration: PropTypes.number,
+    color: PropTypes.string
   }
 
   static defaultProps = {
@@ -29,10 +30,8 @@ export default class Circle extends React.Component {
     fadeOutDuration: 200,
   }
 
-  componentWillMount() {
-    this.size = new Animated.Value(0);
-    this.opacity = new Animated.Value(this.props.initialOpacity);
-  }
+  size = new Animated.Value(0)
+  opacity = new Animated.Value(this.props.initialOpacity)
 
   render() {
     let { zIndex, color, x, y } = this.props;
